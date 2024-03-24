@@ -7,6 +7,6 @@ Description: Design and implement a smart parking system using VHDL on the Nexys
 
 <h3>Team members</h3>
 
-Jakub Kováč (responsible for ...)
-Nikita Kolobov (responsible for ...)
-Martin Kučera (responsible for ...)
+Jakub Kováč (responsible for ...)<br>
+Nikita Kolobov (responsible for ...)<br>
+Martin Kučera (responsible for ...)<br>
