@@ -8,4 +8,4 @@ Description: Design and implement a smart parking system using VHDL on the Nexys
 Team members
 Member 1 (responsible for ...)
 Member 2 (responsible for ...)
-Member 3 (responsible for ...)
+Member 3 (responsible for Nikita Kolobov)
