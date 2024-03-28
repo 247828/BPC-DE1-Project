@@ -9,4 +9,7 @@ https://docs.github.com/en/get-started/writing-on-github/getting-started-with-wr
 
 
 Nexys A7 Reference Manual<br>
-https://digilent.com/reference/programmable-logic/nexys-a7/reference-manual
+https://digilent.com/reference/programmable-logic/nexys-a7/reference-manual<br>
+
+Ultrasonic Ranging Module HC - SR04<br>
+https://cdn.sparkfun.com/datasheets/Sensors/Proximity/HCSR04.pdf<br>
