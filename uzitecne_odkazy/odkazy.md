@@ -16,3 +16,6 @@ https://cdn.sparkfun.com/datasheets/Sensors/Proximity/HCSR04.pdf<br>
 
 One-time pulse<br>
 https://community.intel.com/t5/Intel-Quartus-Prime-Software/VHDL-Code-For-Ultrasonic-Distance-Sensor-HC-SR04/m-p/215466
+
+testbench<br>
+https://vhdl.lapinoo.net/testbench/
