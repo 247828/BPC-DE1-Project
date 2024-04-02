@@ -1,4 +1,4 @@
-# Projekt BPC-DE1
+# BPC-DE1 Projekt
 <h2>Vybraná téma a zadanie:</h2>
 
 <i>Topic 1: Smart Parking System with Ultrasonic Sensors</i>
