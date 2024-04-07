@@ -32,6 +32,8 @@ Funkciu merania a vyhodnotenia vysvetlíme na jednom senzore: Spustením štarto
   <li>clock_enable.vhd - generátor periodických "štartovacích" pulzov</li>
   <li>trig_pulse.vhd - generátor jednorázových pulzov pre ultrazvukový senzor</li>
   <li>echo_detector.vhd - počítadlo a vyhodnotenie vzdialenosti v cm v binárom čísle</li>
+  <li>bin2bcd9.vhd - prevodník binárneho čísla na kód "Binary to Decimal" pre zobrazenie čísel v desiatkovej sústave na sedem segmentových displejoch</li>
+  <li>bin2seg.vhd - prevodník binárneho čísla na zobrazenie na sedem segmentovom displeji</li>
   
 </ul>
 <i>... a ďalšie budú pridané postupne</i>
@@ -42,8 +44,8 @@ Funkciu merania a vyhodnotenia vysvetlíme na jednom senzore: Spustením štarto
 <h2>Použité zdroje a nástroje</h2>
 <ol>
   <li>Modul s ultrazvukovými senzormi typ HC-SR04</li>
-  <li>Doska s FPGA typ Nexys A7-50T</li>
-  <li>Komponent <i>clock_enable.vhd</i> vytvorený počas počítačových cvičení predmetu</li>
+  <li>Doska s FPGA typ Nexys A7-50T, <a href="https://digilent.com/reference/programmable-logic/nexys-a7/reference-manual">referenčný manuál</a></li>
+  <li>Komponenty <i>clock_enable.vhd</i> a <i>bin2seg.vhd</i> vytvorené počas počítačových cvičení predmetu</li>
   <li><i>... odkazy s nápadmi, kde sme sa inšpirovali, manuály a pod.</i></li>
   
 </ol>
