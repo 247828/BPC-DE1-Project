@@ -13,7 +13,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity trig_pulse is
 	Generic (
-		PULSE_WIDTH : integer := 10000000 -- 10 ns * PULSE_WIDTH pulse width
+		PULSE_WIDTH : integer := 10_000_000 -- 10 ns * PULSE_WIDTH pulse width
 	);
 
 	Port ( 
@@ -26,7 +26,7 @@ end trig_pulse;
 
 architecture Behavioral of trig_pulse is
 	-- variables
-	signal sig_count : integer range 0 to 10000000; -- := 0;
+	signal sig_count : integer range 0 to 10_000_000; -- := 0;
 	signal start_pulse : std_logic; -- := '0';
 	
     begin

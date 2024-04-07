@@ -17,8 +17,8 @@ entity echo_detect is
 	Port ( 
 		trig		: in STD_LOGIC;
 		echo_in		: in STD_LOGIC;
-		clk		    : in std_logic;
-		rst		    : in std_logic;
+		clk		: in std_logic;
+		rst		: in std_logic;
 		distance	: out STD_LOGIC_VECTOR (8 downto 0) -- result in cm in range 3 to 400 => 9 bits (512 values)
 	);
 end echo_detect;
@@ -32,7 +32,7 @@ architecture Behavioral of echo_detect is
 	begin
 		count : process(clk) is
 			begin
-				if (trig = '1') then
+				if (trig = '1') then - vyslanie trigovacieho pulzu - zaciatok pocitania
 					count_enable <= '1';
 				end if;
     
@@ -43,11 +43,11 @@ architecture Behavioral of echo_detect is
 						sig_count <= 0;
 						sig_result <= 0;
 						distance <= (others => '0');
-                    
+					-- pocitanie, kym nedorazila vlna naspat
 					elsif (count_enable = '1') then 
                 
-						if (echo_in = '0') then -- when echo wave comes reset process the
-                    
+						if (echo_in = '1') then -- prichod vlny naspat 
+							-- vynulovanie signalov a poslanie vysledku
 							count_enable <= '0';
 							distance <= std_logic_vector(to_unsigned(sig_result, 9));
 							sig_result <= 0;
