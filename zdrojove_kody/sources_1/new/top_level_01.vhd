@@ -13,10 +13,13 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity top_level_01 is
 	port ( 
-		JC0		: out STD_LOGIC; -- JC konektor - vystup pre trig HC-SR04
-		JD0		: in STD_LOGIC; -- JD konektor - vstup od echo HC-SR04
+		-- JC konektor - vystup pre trig HC-SR04
+		JC0		: out STD_LOGIC;
+		-- JD konektor - vstup od echo HC-SR04
+		JD0		: in STD_LOGIC;
 		CLK100MHZ	: in STD_LOGIC;
 		BTNC		: in STD_LOGIC; -- reset aktivny v H (1)
+		-- 7 segmentovy displej
 		CA		: out STD_LOGIC; 
 		CB		: out STD_LOGIC;
 		CC		: out STD_LOGIC;
@@ -26,7 +29,9 @@ entity top_level_01 is
 		CG		: out STD_LOGIC;
 		AN		: out STD_LOGIC_VECTOR (7 downto 0);
 		DP		: out STD_LOGIC; -- desatinna ciarka
-		LED : out STD_LOGIC_VECTOR (8 downto 0)); 
+		-- zobrazenie vysledku v cm na LED-ky v binarnom kode
+		LED		: out STD_LOGIC_VECTOR (8 downto 0)
+	); 
 end top_level_01;
 
 architecture Behavioral of top_level_01 is
@@ -78,7 +83,8 @@ architecture Behavioral of top_level_01 is
 	signal sig_seg		: std_logic_vector(3 downto 0);
 
 	begin
-		-- instanciacia 
+		-- instanciacia
+		-- generator periodickeho pulzu na cykly
 		cycle_gen : clock_enable
 			generic map (
 				PERIOD => 20_000_000 -- 200 ms cyklus 
@@ -88,7 +94,7 @@ architecture Behavioral of top_level_01 is
 				rst	=> BTNC,
 				pulse	=> sig_start
 			);
-		
+		-- generator jednorazoveho pulzu
 		trig_puls_gen : trig_pulse
 			generic map (
 				PULSE_WIDTH => 2000 -- 20 us pulz pre trig (min. 10 us)
@@ -99,7 +105,7 @@ architecture Behavioral of top_level_01 is
 				clk		=> CLK100MHZ,		
 				rst		=> BTNC		
 			);
-
+		-- vstupy od echo
 		echo_1 : echo_detect
 			port map (
 				trig		=> sig_trig,
@@ -108,7 +114,7 @@ architecture Behavioral of top_level_01 is
 				rst		=> BTNC,  
 				distance	=> sig_distance 
 			);
-
+		-- 7 segmentovy displej
 		display : bin2seg
 			port map (
 				clear	=> '0',
@@ -124,13 +130,15 @@ architecture Behavioral of top_level_01 is
 		-- zobrazenie hexadecimal vysledku v cm na 3 segmenty 
 		AN <= b"1111_1110";
 		sig_seg <= sig_distance(3 downto 0);
-		DP <= '0'
+		DP <= '0';
                 AN <= b"1111_1101";
                 sig_seg <= sig_distance(7 downto 4);
+		DP <= '0';
                 AN <= b"1111_1100";
                 sig_seg(0) <= sig_distance(8);
 		sig_seg(3 downto 1) <= b"000";
-
+		DP <= '0';
+		-- priradenie vnutorych signalov
 		JC0 <= sig_trig;	-- vystup trig signalu	
 		LED <= sig_distance;	-- zobraz binarny vysledok na LED
 
