@@ -3,19 +3,19 @@
 <i>Vysoké učení technické v Brně, Fakulta elektrotechniky a komunikačních technologií, letný semester 2023/2024</i>
 <h2>Členovia tímu</h2>
 
-Jakub Kováč (kód a simulácie)<br>
-Nikita Kolobov (responsible for ...)<br>
-Martin Kučera (responsible for ...)<br>
+Jakub Kováč (kód a simulácie senzora)<br>
+Nikita Kolobov (responsible for ... prepínanie)<br>
+Martin Kučera (responsible for ... dekódovanie)<br>
 
 <h2>Teoretický popis, vysvetlenie</h2>
 <p>
 Inteligentný parkovací systém je sám schopný na pravidelne aktualizovaných dátach vyhodnotiť, aký je stav parkovacích miest. Ak použijeme vstupné dáta vzdialenosť, je potrebné zabezpečiť jej pravidelné meranie a priradením určitých hodnôt do určených intervaloch vyhodnocovať obsadenie parkovacieho miesta.
 <br><br>
 <i>HC-SR04</i> je ultrazvukový senzor, ktorý meria vzdialenosť v rozmedzí od približne 2 cm do 4 m. Princíp merania spočíva vyslaním ultrazvukových pulzov vysielačom, ktoré sa spustia jednorázovým externým pulzom úrovne HIGH minimálnej šírky 10 µs na vstupný pin "trig". Tým sa taktiež na výstupe "echo" zmení úroveň na HIGH a modul čaká na odrazenú vlnu. Prichádzajúca vlna zmení úroveň na výstupe "echo" na LOW. Výsledná vzdialenosť sa prepočíta pomocou vzťahu:
-<br>
-<img src="/obrazky/vzorce/vzdialenost.png">
-<br>
-kde <i>d</i> je výsledná vzdialenosť v metroch, <i>v</i> je rýchlosť zvuku v metroch za sekundu a <i>t</i> je čas, počas ktorého je úroveň výstupu "echo" HIGH v sekundách.
+<br><br>
+<img src="/obrazky/vzorce/vzdialenost.png" width="63" height="39">
+<br><br>
+kde <i>d</i> je výsledná vzdialenosť v metroch, <i>v</i> je rýchlosť zvuku v metroch za sekundu a <i>t</i> je čas, počas ktorého je úroveň výstupu "echo" HIGH v sekundách. Pretože prichádzajúca vlna naspäť prejde tú istú vzdialenosť dvakrát (2<i>d</i>), výslednú vzdialenosť <i>d</i> získame vydelením rovnice dvojkou.
 
 </p>
 
