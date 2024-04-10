@@ -2,19 +2,10 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
--- Uncomment the following library declaration if using
--- arithmetic functions with Signed or Unsigned values
---use IEEE.NUMERIC_STD.ALL;
-
--- Uncomment the following library declaration if instantiating
--- any Xilinx leaf cells in this code.
---library UNISIM;
---use UNISIM.VComponents.all;
-
 entity trig_pulse is
 	Generic (
 		PULSE_WIDTH : integer := 2000 -- sirka pulzu: clk * PULSE_WIDTH
-	);				      -- sirka pulzu 20 us pri clk = 100 MHz
+	); -- 2000 = sirka pulzu 20 us pri clk = 100 MHz
 
 	Port ( 
 		start		: in STD_LOGIC;
