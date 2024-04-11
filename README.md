@@ -13,20 +13,19 @@ Inteligentný parkovací systém je sám schopný na pravidelne aktualizovaných
 <br><br>
 <i>HC-SR04</i> je ultrazvukový senzor, ktorý meria vzdialenosť v rozmedzí od približne 2 cm do 4 m. Princíp merania spočíva vyslaním ultrazvukových pulzov vysielačom, ktoré sa spustia jednorázovým externým pulzom úrovne HIGH minimálnej šírky 10 µs na vstupný pin "trig". Tým sa taktiež na výstupe "echo" zmení úroveň na HIGH a modul čaká na odrazenú vlnu. Prichádzajúca vlna zmení úroveň na výstupe "echo" na LOW. Výsledná vzdialenosť sa prepočíta pomocou vzťahu:
 <br><br>
-<img src="/obrazky/vzorce/vzdialenost.png" width="63" height="39">
-<br><br>
+<img src="/obrazky/vzorce/vzdialenost.png" width="63" height="39"><br><br>
 kde <i>d</i> je výsledná vzdialenosť v metroch, <i>v</i> je rýchlosť zvuku v metroch za sekundu a <i>t</i> je čas, počas ktorého je úroveň výstupu "echo" HIGH v sekundách. Pretože prichádzajúca vlna naspäť prejde tú istú vzdialenosť dvakrát (2<i>d</i>), výslednú vzdialenosť <i>d</i> získame vydelením rovnice dvojkou.
 
 </p>
 
 <h2>Opis hardverového návrhu</h2>
-Návrh parkovacieho systému spočíva v pravidelnom meraní vzdialeností modulmi ultrazvukových senzorov HC-SR04, ktoré budú pripojené k doske s FPGA Nexys A7-50T. Na sedem segmentovom displeji sa zobrazí číslo parkovacieho miesta vzdialenosť, ktorú senzor počas posledného cyklu nameral. Pomocou tlačidla bude možné prepínať medzi rôznymi parkovacími miestami. Na LED-kách sa zobrazí stav obsadenosti parkovacích miest. Zapnutá indikuje, že je parkovacie miesto voľné a vypnutá, že nie. Pri aktuálne zobrazených údajoch o parkovacom mieste na sedem segmentovom displeji bude taktiež svietiť RGB LED-ka, ktorá obsadené parkovacie miesto oznámi červenou farbou a voľné zelenou. Reset systému bude možné vykonať stlačením iného tlačítka, čím sa vynulujú údaje a započne nový cyklus merania.
+Návrh parkovacieho systému spočíva v pravidelnom meraní vzdialeností modulmi ultrazvukových senzorov HC-SR04, ktoré budú pripojené k doske s FPGA Nexys A7-50T. Na sedem segmentovom displeji sa zobrazí číslo parkovacieho miesta vzdialenosť, ktorú senzor počas posledného cyklu nameral. Pomocou tlačidla bude možné prepínať medzi rôznymi parkovacími miestami. Na LED-kách sa zobrazí stav obsadenosti parkovacích miest. Zapnutá indikuje, že je parkovacie miesto voľné a vypnutá, že nie. Reset systému bude možné vykonať stlačením iného tlačítka, čím sa vynulujú údaje a započne nový cyklus merania.
 </p>
 
 <h2>Popis softvérového riešenia</h2>
 <p>
-<i>... vložiť schému návrhu Top Level</i>
-<br><br>
+<img src="/obrazky/blok_schema_top_level.png">
+<i>obr. 1 Schéma návrhu riešenia</i><br><br>
 Funkciu merania a vyhodnotenia vysvetlíme na jednom senzore: Spustením štartovacieho pulzu sa spustí jednorázový impulz, ktorý spustí vyslanie ultrazvukovej vlny a zároveň počítadlo. Počítadlo počíta hodinové cykly. Keď po určitom počte hodinových cykloch dosiahne hodnotu odpovedajúcu približne jednému centimetru, pripočíta sa jeden centimeter do výsledku a počítadlo sa vynuluje a počíta znovu. Keď dorazí odrazená vlna, zastaví sa počítanie, výsledná vzdialenosť sa nasmeruje na spracovanie a následné zobrazenie na displej. Vyvolaním resetu sa všetky počítadlá vynulujú.
 </p>
 
