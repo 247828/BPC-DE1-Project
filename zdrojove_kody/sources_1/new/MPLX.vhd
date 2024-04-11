@@ -6,12 +6,17 @@ entity MPLX is
     Port ( 
         clk : in STD_LOGIC;
         reset : in STD_LOGIC;
-        in_A : in STD_LOGIC;
-        in_B : in STD_LOGIC;
-        in_C : in STD_LOGIC;
-        in_D : in STD_LOGIC;
+        in_A : in STD_LOGIC_VECTOR(8 downto 0);
+        in_Ad : in STD_LOGIC_VECTOR(2 downto 0);
+        in_B : in STD_LOGIC_VECTOR(8 downto 0);
+        in_Bd : in STD_LOGIC_VECTOR(2 downto 0);
+        in_C : in STD_LOGIC_VECTOR(8 downto 0);
+        in_Cd : in STD_LOGIC_VECTOR(2 downto 0);
+        in_D : in STD_LOGIC_VECTOR(8 downto 0);
+        in_Dd : in STD_LOGIC_VECTOR(2 downto 0);
         button : in STD_LOGIC;
-        echo : out STD_LOGIC
+        dis_out : out STD_LOGIC_VECTOR(8 downto 0);
+        dev_out : out STD_LOGIC_VECTOR(2 downto 0)
     );
 end MPLX;
 
@@ -51,19 +56,24 @@ begin
     end process;
 
     -- Výběr vstupu pro výstup 'echo'
-    process(sig_select, in_A, in_B, in_C, in_D)
+    process(sig_select, in_A, in_B, in_C, in_D, in_Ad, in_Bd, in_Cd, in_Dd)
     begin
         case sig_select is
             when "00" =>
-                echo <= in_A;
+                dis_out <= in_A;
+                dev_out <= in_Ad;
             when "01" =>
-                echo <= in_B;
+                dis_out <= in_B;
+                dev_out <= in_Bd;
             when "10" =>
-                echo <= in_C; 
+                dis_out <= in_C;
+                dev_out <= in_Cd; 
             when "11" =>
-                echo <= in_D;
+                dis_out <= in_D;
+                dev_out <= in_Dd;
             when others =>
-                echo <= '0'; -- Bezpečnostní výchozí stav
+                dis_out <= "000000000"; 
+                dev_out <= "000";-- Bezpečnostní výchozí stav
         end case;
     end process;
    
