@@ -1,6 +1,7 @@
+
 -- Testbench automatically generated online
 -- at https://vhdl.lapinoo.net
--- Generation date : 28.3.2024 17:50:39 UTC
+-- Generation date : 2.4.2024 09:38:54 UTC
 
 library ieee;
 use ieee.std_logic_1164.all;
@@ -11,11 +12,16 @@ end tb_trig_pulse;
 architecture tb of tb_trig_pulse is
 
     component trig_pulse
+	generic (
+		PULSE_WIDTH : integer
+        );
         port (start    : in std_logic;
               trig_out : out std_logic;
               clk      : in std_logic;
               rst      : in std_logic);
     end component;
+
+	--constant C_PULSE_WIDTH : integer := 10;
 
     signal start    : std_logic;
     signal trig_out : std_logic;
@@ -29,6 +35,9 @@ architecture tb of tb_trig_pulse is
 begin
 
     dut : trig_pulse
+    generic map (
+	PULSE_WIDTH => 10
+    )
     port map (start    => start,
               trig_out => trig_out,
               clk      => clk,
@@ -44,18 +53,31 @@ begin
     begin
         -- EDIT Adapt initialization as needed
         start <= '0';
-        -- Reset generation
+
+         -- Reset generation
         -- EDIT: Check that rst is really your reset signal
         rst <= '1';
-        wait for 100 ns;
+        wait for 2 * TbPeriod;
         rst <= '0';
-        wait for 100 ns;
-
+        wait for 2 * TbPeriod;
         -- EDIT Add stimuli here
         start <= '1';
-        wait for 1 * TbPeriod;
+        wait for 0.5 * TbPeriod;
         start <= '0';
-        wait for 100 * TbPeriod;
+        wait for 30 * TbPeriod;
+        start <= '1';
+        wait for 0.5 * TbPeriod;
+        start <= '0';
+        wait for 5 * TbPeriod;
+        rst <= '1';	-- reset test
+        wait for 2 * TbPeriod;
+        rst <= '0';
+        wait for 30 * TbPeriod;
+        start <= '1';
+        wait for 0.5 * TbPeriod;
+        start <= '0';
+        wait for 30 * TbPeriod;
+
         -- Stop the clock and hence terminate the simulation
         TbSimEnded <= '1';
         wait;

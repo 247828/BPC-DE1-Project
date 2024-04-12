@@ -1,46 +1,46 @@
-
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
--- Uncomment the following library declaration if using
--- arithmetic functions with Signed or Unsigned values
---use IEEE.NUMERIC_STD.ALL;
-
--- Uncomment the following library declaration if instantiating
--- any Xilinx leaf cells in this code.
---library UNISIM;
---use UNISIM.VComponents.all;
-
 entity trig_pulse is
-    Port ( start : in STD_LOGIC;
-           trig_out : out STD_LOGIC;
-           clk : in std_logic;
-           rst: in std_logic
-           );
+	Generic (
+		PULSE_WIDTH : integer := 2000 -- sirka pulzu: clk * PULSE_WIDTH
+	); -- 2000 = sirka pulzu 20 us pri clk = 100 MHz
+
+	Port ( 
+		start		: in STD_LOGIC;
+		trig_out	: out STD_LOGIC; -- := '0';
+		clk		: in std_logic;
+		rst		: in std_logic
+	);
 end trig_pulse;
 
 architecture Behavioral of trig_pulse is
-
-signal sig_count : integer range 0 to 10000;
-signal start_pulse : std_logic;
-begin
-    pulse : process(clk) is
+	-- vnutorne signaly
+	signal sig_count : integer range 0 to 100_000; -- := 0; -- max 1 ms
+	signal start_pulse : std_logic; -- := '0';
+	
     begin
-    if (start = '1') then
-        start_pulse <= '1';
-    end if;
+	pulse : process(clk) is
+		begin
+			if (start = '1') then -- zaciatok pocitania a generovania pulzu
+				start_pulse <= '1';
+			end if;
     
-    if (rising_edge(clk)) then
-                if (start_pulse = '1') then -- send 10us trig
-                    if (sig_count = 1000) then -- 10 us trig is completed, reset tmp signals for the new calculation
-                        trig_out <= '0';
-                        start_pulse <= '0';
-                        sig_count <= 0;
-                    else
-                        trig_out <= '1';
-                        sig_count <= sig_count + 1;
-                    end if;
-        end if;
-        end if;
-    end process;
+			if (rising_edge(clk)) then -- kazdu nabeznu hranu hodinovej periody
+				if (rst = '1') then -- reset - vynulovanie "vsetkeho"
+					trig_out <= '0';
+					start_pulse <= '0';
+					sig_count <= 0;
+				elsif (start_pulse = '1') then -- generuj pulz sirky PULSE_WIDTH
+					if (sig_count = PULSE_WIDTH) then -- koniec generovania
+						trig_out <= '0';
+						start_pulse <= '0';
+						sig_count <= 0;
+					else -- pocitanie
+						trig_out <= '1';
+						sig_count <= sig_count + 1;
+					end if;
+				end if;
+			end if;
+		end process;
 end Behavioral;

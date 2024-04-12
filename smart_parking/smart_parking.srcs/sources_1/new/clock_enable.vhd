@@ -1,45 +1,17 @@
-----------------------------------------------------------------------------------
--- Company: 
--- Engineer: 
--- 
--- Create Date: 03/07/2024 06:02:21 PM
--- Design Name: 
--- Module Name: clock_enable - Behavioral
--- Project Name: 
--- Target Devices: 
--- Tool Versions: 
--- Description: 
--- 
--- Dependencies: 
--- 
--- Revision:
--- Revision 0.01 - File Created
--- Additional Comments:
--- 
-----------------------------------------------------------------------------------
-
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.math_real.ALL;
 use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
--- Uncomment the following library declaration if using
--- arithmetic functions with Signed or Unsigned values
---use IEEE.NUMERIC_STD.ALL;
-
--- Uncomment the following library declaration if instantiating
--- any Xilinx leaf cells in this code.
---library UNISIM;
---use UNISIM.VComponents.all;
-
 entity clock_enable is
-
     generic (
-        PERIOD : integer := 6
+        PERIOD : integer := 10_000_000
     );
-    Port ( clk : in STD_LOGIC;
-           rst : in STD_LOGIC;
-           pulse : out STD_LOGIC);
+    Port ( 
+        clk : in STD_LOGIC;
+        rst : in STD_LOGIC;
+        pulse : out STD_LOGIC
+    );
 end clock_enable;
 
 architecture Behavioral of clock_enable is
@@ -52,28 +24,27 @@ begin
     --! is low and generated pulse is always one clock long.
     p_clk_enable : process (clk) is
     begin
-
-        -- Synchronous proces
+        -- Synchronny proces
         if (rising_edge(clk)) then
-            -- if high-active reset then
+            -- ak je reset v urovni HIGH, tak
             if (rst = '1') then
-                -- Clear all bits of local counter
+                -- vynuluj vsetky bity v lokalnom pocitadlu
                 sig_count <= (others => '0'); -- others - priradi vstkemu co nastavim
-                -- Set output `pulse` to low
+                -- Nastav vystupny pulz na uroven LOW
                 pulse <= '0';
-            -- elsif sig_count is PERIOD-1 then
+            -- ak nie, tak ak je pocitadlo sig_count rovne PERIOD-1, tak
             elsif (sig_count = PERIOD-1) then
-                -- Clear all bits of local counter
+                -- vynuluj vsetky bity v lokalnom pocitadlu
                  sig_count <= (others => '0');
-                -- Set output `pulse` to high
+                -- nastav uroven vystupneho pulzu na HIG
                 pulse <= '1';
-            -- else
+            -- ak ani toto, tak
             else 
-                -- Increment local counter
+                -- Zvys lokalne pocitadlo o jedna
                 sig_count <= sig_count + 1;
-                -- Set output `pulse` to low
+                -- Nastav vystupny pulz na LOW
                 pulse <= '0';
-            -- Each `if` must end by `end if`
+            -- kazdy "if" musi koncit "end if"
             end if;
         end if;
 
