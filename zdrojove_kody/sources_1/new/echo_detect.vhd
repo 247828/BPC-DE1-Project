@@ -4,23 +4,28 @@ use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
 entity echo_detect is
+    generic (
+        DEVICE_NUMBER : INTEGER := 1
+    );
     port ( 
         trig       : in STD_LOGIC;
         echo_in    : in STD_LOGIC;
-		clk        : in std_logic;
-		rst		   : in std_logic;
-		distance   : out STD_LOGIC_VECTOR (8 downto 0) -- vysledok v cm (snima od cca 2 to 400 cm => cca 400 hodnot => potrebnych 9 bitov 
+		clk        : in STD_LOGIC;
+		rst		   : in STD_LOGIC;
+		dev_num    : out STD_LOGIC_VECTOR (2 downto 0);
+		distance   : out STD_LOGIC_VECTOR (8 downto 0); -- vysledok v cm (snima od cca 2 to 400 cm => cca 400 hodnot => potrebnych 9 bitov
+		status     : out STD_LOGIC 
     );
 end echo_detect;
 
 architecture Behavioral of echo_detect is
     -- konstanty
-    constant ONE_CM     : integer :=  5827; -- (343 m/s (20_C)) 5878 (340 m/s (15_C)) potrebny pocet clk cyklov na 1 cm (clk = 100 MHz)
+    constant ONE_CM         : INTEGER :=  5827; -- (343 m/s (20_C)) 5878 (340 m/s (15_C)) potrebny pocet clk cyklov na 1 cm (clk = 100 MHz)
     -- vnutorne signaly
-    signal sig_count	: integer range 0 to ONE_CM + 1; -- := 0; vnutorne pocitadlo
-    signal sig_result	: integer range 0 to 500; -- vysledok v cm
-    signal sig_prepare : std_logic;
-    signal sig_count_enable	: std_logic;
+    signal sig_count        : INTEGER range 0 to ONE_CM + 1; -- := 0; vnutorne pocitadlo
+    signal sig_result	    : INTEGER range 0 to 500; -- vysledok v cm
+    signal sig_prepare      : STD_LOGIC;
+    signal sig_count_enable	: STD_LOGIC;
 	
     begin
 	   
@@ -45,6 +50,11 @@ architecture Behavioral of echo_detect is
                             distance <= std_logic_vector(to_unsigned(sig_result, 9));
                             sig_count_enable <= '0';
                             sig_prepare <= '0';
+                            if (sig_result < 50) then --
+                                status <= '0';
+                            else
+                                status <= '1';
+                            end if;
                             sig_result <= 0;
                             sig_count <= 0;       
                         elsif (echo_in = '1' and sig_count = ONE_CM) then -- ak sa napocitalo tolko cyklov odpovedajucich 1 cm
@@ -60,4 +70,6 @@ architecture Behavioral of echo_detect is
                     end if;
                 end if;
         end process;
+        -- cislo zariadenia
+        dev_num <= std_logic_vector(to_unsigned(DEVICE_NUMBER, 3));        
 end Behavioral;
