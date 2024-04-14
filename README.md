@@ -46,7 +46,7 @@ Funkciu merania a vyhodnotenia vysvetlíme na jednom senzore: Spustením štarto
   <i>obr. 4 a 5 Simulácia komponentu clock_enable</i><br><br>
   <li>bin2bcd9.vhd - prevodník binárneho čísla na kód "Binary to Decimal" pre zobrazenie čísel v desiatkovej sústave na sedem segmentových displejoch</li>
   <p><i>krátky popis</i></p>
-  <li>bin2seg.vhd - prevodník binárneho čísla na zobrazenie na sedem segmentovom displeji</li>
+  <li>seven_seg_disp_drv.vhd - Ovládač sedemsegmentových jednotiek dosky Nexys A7-50T. Využíva komponenty bin2seg.vhd a clock_enable.vhd</li>
   <p><i>krátky popis</i></p>
   
 </ul>
