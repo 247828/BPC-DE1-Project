@@ -26,31 +26,14 @@ entity seven_seg_disp_drv is
 end seven_seg_disp_drv;
 
 architecture Behavioral of seven_seg_disp_drv is
-    -- lokálne sigály
+    -- lokÃ¡lne sigÃ¡ly
     signal sig_count_pulse : STD_LOGIC;
     signal sig_chosen_in_data : STD_LOGIC_VECTOR (3 downto 0);  
     signal sig_count : INTEGER range 0 to 7;
-    -- deklaracia komponentov 
-    component clock_enable
-        generic (
-            PERIOD : integer
-        );
-        port ( 
-            clk     : in STD_LOGIC;
-            rst     : in STD_LOGIC;
-            pulse   : out STD_LOGIC
-        );
-    end component;
-    
-    component bin2seg
-        port (
-            clear   : in STD_LOGIC;
-            bin     : in STD_LOGIC_VECTOR (3 downto 0);
-            seg     : out STD_LOGIC_VECTOR (6 downto 0));
-    end component;
+
     begin
-        -- instanciacia vlozenych komponentov
-        count_pulse : clock_enable
+
+        count_pulse : entity work.clock_enable
             generic map (
                 PERIOD => 100000 -- 5 - 50 ns pre simulaciu, 100000 - 1 ms pre realitu
             )
@@ -59,7 +42,7 @@ architecture Behavioral of seven_seg_disp_drv is
             rst     => rst,
             pulse   => sig_count_pulse
             );
-        display : bin2seg
+        display : entity work.bin2seg
         
             port map (
                 clear => rst,
