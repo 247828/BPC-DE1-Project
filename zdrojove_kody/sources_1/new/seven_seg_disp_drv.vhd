@@ -1,7 +1,7 @@
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
---use IEEE.NUMERIC_STD.ALL;
+use IEEE.NUMERIC_STD.ALL;
 
 entity seven_seg_disp_drv is
     port ( 
@@ -26,7 +26,7 @@ entity seven_seg_disp_drv is
 end seven_seg_disp_drv;
 
 architecture Behavioral of seven_seg_disp_drv is
-    -- lok√°lne sig√°ly
+    -- lok·lne sig·ly
     signal sig_count_pulse : STD_LOGIC;
     signal sig_chosen_in_data : STD_LOGIC_VECTOR (3 downto 0);  
     signal sig_count : INTEGER range 0 to 7;

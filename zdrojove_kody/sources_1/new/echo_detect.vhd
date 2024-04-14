@@ -44,13 +44,14 @@ architecture Behavioral of echo_detect is
                         sig_count <= 0;
                         sig_result <= 0;
                         distance <= (others => '0');
+                        status <= '0';
 					-- pocitanie casu '1' (HIGH) pulzu na echo_in 
                     elsif (sig_count_enable = '1') then
                         if (echo_in = '0') then -- prichod odrazenej vlny naspat - vynulovanie signalov a poslanie vysledku
                             distance <= std_logic_vector(to_unsigned(sig_result, 9));
                             sig_count_enable <= '0';
                             sig_prepare <= '0';
-                            if (sig_result < 50) then --
+                            if (sig_result < 50) then -- svetelne vyhodnotenie obsadenia (LED-kov)
                                 status <= '0';
                             else
                                 status <= '1';
