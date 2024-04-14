@@ -3,9 +3,9 @@
 <i>Vysoké učení technické v Brně, Fakulta elektrotechniky a komunikačních technologií, letný semester 2023/2024</i>
 <h2>Členovia tímu</h2>
 
-Jakub Kováč (kód a simulácie senzora)<br>
-Nikita Kolobov (responsible for ... prepínanie)<br>
-Martin Kučera (responsible for ... dekódovanie)<br>
+Jakub Kováč (spracovanie údajov senzormi, simulácie...)<br>
+Nikita Kolobov (multiplexor, simulácie...)<br>
+Martin Kučera (dekóder binary to binary decoded decimal, simulácie...)<br>
 
 <h2>Teoretický popis, vysvetlenie</h2>
 <p>
@@ -19,13 +19,15 @@ kde <i>d</i> je výsledná vzdialenosť v metroch, <i>v</i> je rýchlosť zvuku 
 </p>
 
 <h2>Opis hardverového návrhu</h2>
-Návrh parkovacieho systému spočíva v pravidelnom meraní vzdialeností modulmi ultrazvukových senzorov HC-SR04, ktoré budú pripojené k doske s FPGA Nexys A7-50T. Na sedem segmentovom displeji sa zobrazí číslo parkovacieho miesta vzdialenosť, ktorú senzor počas posledného cyklu nameral. Pomocou tlačidla bude možné prepínať medzi rôznymi parkovacími miestami. Na LED-kách sa zobrazí stav obsadenosti parkovacích miest. Zapnutá indikuje, že je parkovacie miesto voľné a vypnutá, že nie. Reset systému bude možné vykonať stlačením iného tlačítka, čím sa vynulujú údaje a započne nový cyklus merania.
+Návrh parkovacieho systému spočíva v pravidelnom meraní vzdialeností modulmi ultrazvukových senzorov HC-SR04, ktoré budú pripojené k doske s FPGA Nexys A7-50T. Na sedem segmentovom displeji sa zobrazí číslo parkovacieho miesta vzdialenosť, ktorú senzor počas posledného cyklu nameral. Pomocou tlačidla bude možné prepínať medzi rôznymi parkovacími miestami. Na LED-kách sa zobrazí stav obsadenosti parkovacích miest. Zapnutá indikuje, že je parkovacie miesto voľné a vypnutá, že nie. Reset systému bude možné vykonať stlačením iného tlačítka, čím sa vynulujú údaje a započne nový cyklus merania. (PRIDAŤ ILUSTRAČNÝ OBRÁZOK)
+<br><br>
+Keďže signály dosky Nexys A7-50T pracujú s napätím 3,3 V a senzory s 5 V, senzory sú napájané externe a napätie výstupu echo je znížené pomocou odporového deliča na úroveň 3,3 V pre vstup do dosky (PRIDAŤ SCHÉMU).
 </p>
 
 <h2>Popis softvérového riešenia</h2>
 <p>
 <img src="/obrazky/blok_schema_top_level.png">
-<i>obr. 1 Schéma návrhu riešenia</i><br><br>
+<i>obr. 1 Schéma návrhu riešenia, postupne aktualizujeme...</i><br><br>
 Funkciu merania a vyhodnotenia vysvetlíme na jednom senzore: Spustením štartovacieho pulzu sa spustí jednorázový impulz, ktorý spustí vyslanie ultrazvukovej vlny a zároveň počítadlo. Počítadlo počíta hodinové cykly. Keď po určitom počte hodinových cykloch dosiahne hodnotu odpovedajúcu približne jednému centimetru, pripočíta sa jeden centimeter do výsledku a počítadlo sa vynuluje a počíta znovu. Keď dorazí odrazená vlna, zastaví sa počítanie, výsledná vzdialenosť sa nasmeruje na spracovanie a následné zobrazenie na displej. Vyvolaním resetu sa všetky počítadlá vynulujú.
 </p>
 
@@ -44,22 +46,25 @@ Funkciu merania a vyhodnotenia vysvetlíme na jednom senzore: Spustením štarto
   <img src="/obrazky/simulace/echo_detect_02.png" alt="Simulacia modulu echo_detect">
   <img src="/obrazky/simulace/echo_detect_01.png" alt="Simulacia modulu echo_detect">
   <i>obr. 4 a 5 Simulácia komponentu clock_enable</i><br><br>
+  <li>mplx.vhd - multiplexor, ktorý vyberá jeden z viacerých výstupných údajov detektorovm, ktoré sa po prevode zobrazia na sedem segmentovej jednotke</li>
   <li>bin2bcd9.vhd - prevodník binárneho čísla na kód "Binary to Decimal" pre zobrazenie čísel v desiatkovej sústave na sedem segmentových displejoch</li>
-  <p><i>krátky popis</i></p>
+  <img src="/Projekt/obrázky/bin2bcd9_2.png" alt="Simulacia modulu bin2bcd.vhd">
+  <i>obr. 7 Simulácia komponentu bin2bcd9.vhd</i><br><br>
   <li>seven_seg_disp_drv.vhd - Ovládač sedemsegmentových jednotiek dosky Nexys A7-50T. Využíva komponenty bin2seg.vhd a clock_enable.vhd</li>
-  <p><i>krátky popis</i></p>
+  <img src="/obrazky/simulace/seven_seg_disp_drv.png" alt="Simulacia modulu seven_seg_disp_drv.vhd">
+  <i>obr. 8 Simulácia komponentu seven_seg_disp_drv.vhd</i><br><br>
   
 </ul>
-<i>... a ďalšie budú pridané postupne</i>
 
 <h2>Návod na používanie</h2>
 <p><i>Stručné vysvetlenie finálneho produktu, fotografie a video.</i></p>
 
 <h2>Použité zdroje a nástroje</h2>
 <ol>
-  <li>Modul s ultrazvukovými senzormi typ HC-SR04, <a href="https://cdn.sparkfun.com/datasheets/Sensors/Proximity/HCSR04.pdf">katalógový list</a></li></li>
+  <li>Moduly s ultrazvukovými senzormi typ HC-SR04, <a href="https://cdn.sparkfun.com/datasheets/Sensors/Proximity/HCSR04.pdf">katalógový list</a></li></li>
   <li>Doska s FPGA typ Nexys A7-50T, <a href="https://digilent.com/reference/programmable-logic/nexys-a7/reference-manual">referenčný manuál</a></li>
   <li>Komponenty <i>clock_enable.vhd</i> a <i>bin2seg.vhd</i> vytvorené počas počítačových cvičení predmetu</li>
+  <li>Oscilloscope Keysight Technologies DSOX3034T (350 MHz, 4 analógové kanály)</li>
   <li><i>... odkazy s nápadmi, kde sme sa inšpirovali, manuály a pod.</i></li>
   
 </ol>
