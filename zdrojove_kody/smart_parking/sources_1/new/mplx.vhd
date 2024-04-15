@@ -1,6 +1,6 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
-use IEEE.NUMERIC_STD.ALL; -- PouûÌv· se pro aritmetickÈ operace se sign·ly
+use IEEE.NUMERIC_STD.ALL; -- Pou≈æ√≠v√° se pro aritmetick√© operace se sign√°ly
 
 entity mplx is
     Port ( 
@@ -32,18 +32,16 @@ begin
             if reset = '1' then
                 sig_select <= "00";
                 button_reg <= '0';
-                -- P¯id·no: reset button_edge p¯i resetu
-                button_edge <= '0';
-            else
-                -- Detekce n·bÏûnÈ hrany tlaËÌtka
+                button_edge <= '0';               
+            end if;
+            
                 if button = '1' and button_reg = '0' then
                     button_edge <= '1';
                 else   
-                    button_edge <= '0';
+                    button_edge <= '0';               
                 end if;
                 button_reg <= button;
 
-                -- ZmÏna v˝bÏru vstupu pouze na n·bÏûnÈ hranÏ
                 if button_edge = '1' then
                     if sig_select = "11" then
                         sig_select <= "00";
@@ -52,10 +50,9 @@ begin
                     end if;
                 end if;
             end if;      
-        end if;
     end process;
 
-    -- V˝bÏr vstupu pro v˝stup 'echo'
+    -- V√Ωbƒõr vstupu pro v√Ωstup 'echo'
     process(sig_select, in_A, in_B, in_C, in_D, in_Ad, in_Bd, in_Cd, in_Dd)
     begin
         case sig_select is
@@ -73,7 +70,7 @@ begin
                 dev_out <= in_Dd;
             when others =>
                 dis_out <= "000000000"; 
-                dev_out <= "000";-- BezpeËnostnÌ v˝chozÌ stav
+                dev_out <= "000";-- Bezpeƒçnostn√≠ v√Ωchoz√≠ stav
         end case;
     end process;
    
