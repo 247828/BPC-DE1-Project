@@ -33,32 +33,34 @@ Funkciu merania a vyhodnotenia vysvetlíme na jednom senzore: Spustením štarto
 
 <h3>Použité komponenty a simulácie</h3>
 <ul>
-  <li><a href="zdrojove_kody/smart_parking/sources_1/new/clock_enable.vhd">clock_enable.vhd</a> - generátor periodických "štartovacích" pulzov</li>
+  <li><a href="/zdrojove_kody/smart_parking/sources_1/new/clock_enable.vhd">clock_enable.vhd</a> - generátor periodických "štartovacích" pulzov</li>
   <p><i>krátky popis</i></p>
   <img src="/obrazky/simulace/clock_enable.png" alt="Simulacia modulu clock_enable">
   <i>obr. 2 Simulácia komponentu clock_enable</i><br><br>
-  <li><a href="zdrojove_kody/smart_parking/sources_1/new/trig_pulse.vhd">trig_pulse.vhd</a> - generátor jednorázových pulzov pre ultrazvukový senzor</li>
+  <li><a href="/zdrojove_kody/smart_parking/sources_1/new/trig_pulse.vhd">trig_pulse.vhd</a> - generátor jednorázových pulzov pre ultrazvukový senzor</li>
   <p><i>krátky popis</i></p>
   <img src="/obrazky/simulace/trig_pulse.png" alt="Simulacia modulu trig_pulse">
   <i>obr. 3 Simulácia komponentu trig_pulse</i><br><br>
-  <li><a href="zdrojove_kody/smart_parking/sources_1/new/echo_detect.vhd">echo_detect.vhd</a> - počítadlo a vyhodnotenie vzdialenosti v cm v binárom čísle</li>
+  <li><a href="/zdrojove_kody/smart_parking/sources_1/new/echo_detect.vhd">echo_detect.vhd</a> - počítadlo a vyhodnotenie vzdialenosti v cm v binárom čísle</li>
   <p><i>krátky popis</i></p>
   <img src="/obrazky/simulace/echo_detect_02.png" alt="Simulacia modulu echo_detect">
   <img src="/obrazky/simulace/echo_detect_01.png" alt="Simulacia modulu echo_detect">
   <i>obr. 4 a 5 Simulácia komponentu clock_enable</i><br><br>
-  <li><a href="zdrojove_kody/smart_parking/sources_1/new/mplx.vhd">mplx.vhd</a> - multiplexor, ktorý vyberá jeden z viacerých výstupných údajov detektorov, ktoré sa po prevode zobrazia na sedem segmentovej jednotke</li>
+  <li><a href="/zdrojove_kody/smart_parking/sources_1/new/mplx.vhd">mplx.vhd</a> - multiplexor</li>
+  <p>Vyberá jeden z viacerých výstupných údajov detektorov, ktoré sa zobrazia na sedem segmentovej jednotke.</p>
+  <img src="/obrazky/simulace/mplx.png" alt="Simulacia modulu echo_detect">
+  <i>obr. 6 Simulácia komponentu mplx</i><br><br>
+  <li><a href="/zdrojove_kody/smart_parking/sources_1/new/bin2bcd9.vhd">bin2bcd9.vhd</a> - prevodník binárneho čísla na kód "Binary to Decimal" pre zobrazenie čísel v desiatkovej sústave na sedem segmentových displejoch</li>
   <p><i>krátky popis</i></p>
-  <li><a href="zdrojove_kody/smart_parking/sources_1/new/bin2bcd9.vhd">bin2bcd9.vhd</a> - prevodník binárneho čísla na kód "Binary to Decimal" pre zobrazenie čísel v desiatkovej sústave na sedem segmentových displejoch</li>
-  <p><i>krátky popis</i></p>
-  <img src="/Projekt/obrázky/bin2bcd9_2.png" alt="Simulacia modulu bin2bcd.vhd">
-  <i>obr. 7 Simulácia komponentu bin2bcd9.vhd</i><br><br>
-  <li><a href="zdrojove_kody/smart_parking/sources_1/new/seven_seg_disp_drv.vhd">seven_seg_disp_drv.vhd</a> - Ovládač sedemsegmentových jednotiek dosky Nexys A7-50T. Využíva komponenty bin2seg.vhd a clock_enable.vhd</li>
-  <p><i>krátky popis</i></p>
+  <img src="/obrazky/bin2bcd9.png" alt="Simulacia modulu bin2bcd.vhd">
+  <i>obr. 7 Simulácia komponentu bin2bcd9</i><br><br>
+  <li><a href="/zdrojove_kody/smart_parking/sources_1/new/seven_seg_disp_drv.vhd">seven_seg_disp_drv.vhd</a> - Ovládač sedemsegmentových jednotiek dosky Nexys A7-50T</li>
+  <p><i>Rýchlosť obnovania segmentov je 125 Hz (obnovovacia perióda je 8 ms, každý segment svieti 1 ms). Používa komponenty bin2seg.vhd a clock_enable.vhd</i></p>
   <img src="/obrazky/simulace/seven_seg_disp_drv.png" alt="Simulacia modulu seven_seg_disp_drv.vhd">
-  <i>obr. 8 Simulácia komponentu seven_seg_disp_drv.vhd</i><br><br>
+  <i>obr. 8 Simulácia komponentu seven_seg_disp_drv/i><br><br>
   
 </ul>
-<p>Súbory test bench nájdete <a href="zdrojove_kody/smart_parking/sim_1/new">tu</a>.</p>
+<p>Súbory test bench nájdete <a href="/zdrojove_kody/smart_parking/sim_1/new">tu</a>.</p>
 
 <h2>Návod na používanie</h2>
 <p><i>Stručné vysvetlenie finálneho produktu, fotografie a video.</i></p>
@@ -68,6 +70,8 @@ Funkciu merania a vyhodnotenia vysvetlíme na jednom senzore: Spustením štarto
   <li>Moduly s ultrazvukovými senzormi typ HC-SR04, <a href="https://cdn.sparkfun.com/datasheets/Sensors/Proximity/HCSR04.pdf">katalógový list</a></li>
   <li>Doska s FPGA typ Nexys A7-50T, <a href="https://digilent.com/reference/programmable-logic/nexys-a7/reference-manual">referenčný manuál</a>, <a href="https://raw.githubusercontent.com/Digilent/digilent-xdc/master/Nexys-A7-50T-Master.xdc">súbor constraint</a></li>
   <li>Komponenty <i>clock_enable.vhd</i> a <i>bin2seg.vhd</i> vytvorené počas počítačových cvičení predmetu</li>
+  <li>Inšpirácia pre návrh prevodníku binary to BCD: <a href="https://www.youtube.com/watch?v=VKKGyOc4zRA">video</a>, <a href"/obrazky/bin2bcd.png">ukážka návrhu algoritmu</a></li>
+  <li>Inšpirácia pre návrh ovládania sedem segmentovej jednotky dosky Nexys A7-50T: <a href="https://digilent.com/reference/programmable-logic/nexys-a7/reference-manual#seven-segment_display">referenčný manuál Nexys A7-50T, kap. 9.1 Seven-Segment Display</a></li>
   <li>Osciloskop Keysight Technologies DSOX3034T (350 MHz, 4 analógové kanály)</li>
   <li><i>... odkazy s nápadmi, kde sme sa inšpirovali, manuály a pod.</i></li>
   
