@@ -68,7 +68,7 @@ architecture Behavioral of top_level is
 			clk      : in STD_LOGIC;
 			rst      : in STD_LOGIC;
 			dev_num  : out STD_LOGIC_VECTOR (2 downto 0);
-			distance : out STD_LOGIC_VECTOR (11 downto 0);
+			distance : out STD_LOGIC_VECTOR (8 downto 0);
 			status   : out STD_LOGIC
 		);
 	end component;
