@@ -1,4 +1,5 @@
 
+
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
@@ -35,37 +36,37 @@ begin
   else
     case bin is
       when x"0" =>     -- x"0" means "0000" in hexadec.
-        seg <= "0000001";
+        seg <= "1000000";
       when x"1" =>
-        seg <= "1001111";
+        seg <= "1111001";
       when x"2" =>     
-        seg <= "0010010";
-      when x"3" =>
-        seg <= "0000110";
-      when x"4" =>
-        seg <= "1001100";
-      when x"5" =>     
         seg <= "0100100";
+      when x"3" =>
+        seg <= "0110000";
+      when x"4" =>
+        seg <= "0011001";
+      when x"5" =>     
+        seg <= "0010010";
       when x"6" =>
-        seg <= "0100000";
+        seg <= "0000010";
       when x"7" =>
-        seg <= "0001111";
+        seg <= "1111000";
       when x"8" =>
         seg <= "0000000";
       when x"9" =>
-        seg <= "0000100";
+        seg <= "0010000";
       when x"A" =>     
         seg <= "0001000";
       when x"B" =>
-        seg <= "1100000";
+        seg <= "0000011";
       when x"C" =>
-        seg <= "0110001";
+        seg <= "1000110";
       when x"D" =>
-        seg <= "1000010";
+        seg <= "0100001";
       when x"E" =>
-        seg <= "0110000";
+        seg <= "0000110";
       when others => -- F pokryte tu, musia byt vsetky moznosti opisane, posledna sa takto, aby sa to prelozilo pri synteze dobre, pri simulacii NIE
-        seg <= "0111000";
+        seg <= "0001110";
     end case;
   end if;    
 end process p_7seg_decoder;
