@@ -1,23 +1,3 @@
-----------------------------------------------------------------------------------
--- Company: 
--- Engineer: 
--- 
--- Create Date: 07.04.2024 19:00:52
--- Design Name: 
--- Module Name: bin2bcd9 - Behavioral
--- Project Name: 
--- Target Devices: 
--- Tool Versions: 
--- Description: 
--- 
--- Dependencies: 
--- 
--- Revision:
--- Revision 0.01 - File Created
--- Additional Comments:
--- 
-----------------------------------------------------------------------------------
-
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
@@ -25,7 +5,7 @@ use IEEE.std_logic_unsigned.all;
 
 entity bin2bcd9 is
     Port ( in_bin : in STD_LOGIC_VECTOR (8 downto 0);
-           out_bcd : out STD_LOGIC_VECTOR (11 downto 0));
+           out_bcd : out STD_LOGIC_VECTOR (10 downto 0));
 end bin2bcd9;
 
 architecture Behavioral of bin2bcd9 is

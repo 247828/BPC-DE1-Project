@@ -1,23 +1,3 @@
-----------------------------------------------------------------------------------
--- Company: 
--- Engineer: 
--- 
--- Create Date: 02/22/2024 05:09:33 PM
--- Design Name: 
--- Module Name: bin2seg - Behavioral
--- Project Name: 
--- Target Devices: 
--- Tool Versions: 
--- Description: 
--- 
--- Dependencies: 
--- 
--- Revision:
--- Revision 0.01 - File Created
--- Additional Comments:
--- 
-----------------------------------------------------------------------------------
-
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
@@ -32,9 +12,10 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all;
 
 entity bin2seg is
-    Port ( clear : in STD_LOGIC;
-           bin : in STD_LOGIC_VECTOR (3 downto 0);
-           seg : out STD_LOGIC_VECTOR (6 downto 0));
+	Port (
+		clear	: in STD_LOGIC;
+		bin	: in STD_LOGIC_VECTOR (3 downto 0);
+		seg	: out STD_LOGIC_VECTOR (6 downto 0));
 end bin2seg;
 
 architecture Behavioral of bin2seg is
