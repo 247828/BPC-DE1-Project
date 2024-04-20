@@ -35,7 +35,7 @@ architecture Behavioral of seven_seg_disp_drv is
 
         count_pulse : entity work.clock_enable
             generic map (
-                PERIOD => 100000 -- 5 - 50 ns pre simulaciu, 100000 - 1 ms pre realitu
+                PERIOD => 50000 -- 5 - 50 ns pre simulaciu, 50000 - 5 ms pre realitu
             )
             port map (
             clk     => clk,
