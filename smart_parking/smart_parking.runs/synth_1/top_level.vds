@@ -1,0 +1,311 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Thu Apr 18 18:49:47 2024
+# Process ID: 1672
+# Current directory: C:/Users/240938/Documents/smart_parking/smart_parking.runs/synth_1
+# Command line: vivado.exe -log top_level.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source top_level.tcl
+# Log file: C:/Users/240938/Documents/smart_parking/smart_parking.runs/synth_1/top_level.vds
+# Journal file: C:/Users/240938/Documents/smart_parking/smart_parking.runs/synth_1\vivado.jou
+#-----------------------------------------------------------
+source top_level.tcl -notrace
+Command: synth_design -top top_level -part xc7a50ticsg324-1L
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a50ti'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a50ti'
+INFO: [Device 21-403] Loading part xc7a50ticsg324-1L
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 2392
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 999.887 ; gain = 0.000
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'top_level' [C:/Users/240938/Documents/smart_parking/smart_parking.srcs/sources_1/new/top_level_01.vhd:35]
+	Parameter PERIOD bound to: 20000000 - type: integer 
+INFO: [Synth 8-3491] module 'clock_enable' declared at 'C:/Users/240938/Documents/smart_parking/smart_parking.srcs/sources_1/new/clock_enable.vhd:7' bound to instance 'cycle_gen' of component 'clock_enable' [C:/Users/240938/Documents/smart_parking/smart_parking.srcs/sources_1/new/top_level_01.vhd:153]
+INFO: [Synth 8-638] synthesizing module 'clock_enable' [C:/Users/240938/Documents/smart_parking/smart_parking.srcs/sources_1/new/clock_enable.vhd:18]
+	Parameter PERIOD bound to: 20000000 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'clock_enable' (1#1) [C:/Users/240938/Documents/smart_parking/smart_parking.srcs/sources_1/new/clock_enable.vhd:18]
+	Parameter PULSE_WIDTH bound to: 2000 - type: integer 
+INFO: [Synth 8-3491] module 'trig_pulse' declared at 'C:/Users/240938/Documents/smart_parking/smart_parking.srcs/sources_1/new/trig_pulse.vhd:5' bound to instance 'trig_puls_gen' of component 'trig_pulse' [C:/Users/240938/Documents/smart_parking/smart_parking.srcs/sources_1/new/top_level_01.vhd:163]
+INFO: [Synth 8-638] synthesizing module 'trig_pulse' [C:/Users/240938/Documents/smart_parking/smart_parking.srcs/sources_1/new/trig_pulse.vhd:18]
+	Parameter PULSE_WIDTH bound to: 2000 - type: integer 
+WARNING: [Synth 8-614] signal 'start' is read in the process but is not in the sensitivity list [C:/Users/240938/Documents/smart_parking/smart_parking.srcs/sources_1/new/trig_pulse.vhd:24]
+INFO: [Synth 8-256] done synthesizing module 'trig_pulse' (2#1) [C:/Users/240938/Documents/smart_parking/smart_parking.srcs/sources_1/new/trig_pulse.vhd:18]
+	Parameter DEVICE_NUMBER bound to: 1 - type: integer 
+	Parameter MIN_DISTANCE bound to: 20 - type: integer 
+INFO: [Synth 8-3491] module 'echo_detect' declared at 'C:/Users/240938/Documents/smart_parking/smart_parking.srcs/sources_1/new/echo_detect.vhd:6' bound to instance 'echo_1' of component 'echo_detect' [C:/Users/240938/Documents/smart_parking/smart_parking.srcs/sources_1/new/top_level_01.vhd:174]
+INFO: [Synth 8-638] synthesizing module 'echo_detect' [C:/Users/240938/Documents/smart_parking/smart_parking.srcs/sources_1/new/echo_detect.vhd:22]
+	Parameter DEVICE_NUMBER bound to: 1 - type: integer 
+	Parameter MIN_DISTANCE bound to: 20 - type: integer 
+WARNING: [Synth 8-614] signal 'sig_prepare' is read in the process but is not in the sensitivity list [C:/Users/240938/Documents/smart_parking/smart_parking.srcs/sources_1/new/echo_detect.vhd:33]
+INFO: [Synth 8-256] done synthesizing module 'echo_detect' (3#1) [C:/Users/240938/Documents/smart_parking/smart_parking.srcs/sources_1/new/echo_detect.vhd:22]
+	Parameter DEVICE_NUMBER bound to: 2 - type: integer 
+	Parameter MIN_DISTANCE bound to: 20 - type: integer 
+INFO: [Synth 8-3491] module 'echo_detect' declared at 'C:/Users/240938/Documents/smart_parking/smart_parking.srcs/sources_1/new/echo_detect.vhd:6' bound to instance 'echo_2' of component 'echo_detect' [C:/Users/240938/Documents/smart_parking/smart_parking.srcs/sources_1/new/top_level_01.vhd:188]
+INFO: [Synth 8-638] synthesizing module 'echo_detect__parameterized1' [C:/Users/240938/Documents/smart_parking/smart_parking.srcs/sources_1/new/echo_detect.vhd:22]
+	Parameter DEVICE_NUMBER bound to: 2 - type: integer 
+	Parameter MIN_DISTANCE bound to: 20 - type: integer 
+WARNING: [Synth 8-614] signal 'sig_prepare' is read in the process but is not in the sensitivity list [C:/Users/240938/Documents/smart_parking/smart_parking.srcs/sources_1/new/echo_detect.vhd:33]
+INFO: [Synth 8-256] done synthesizing module 'echo_detect__parameterized1' (3#1) [C:/Users/240938/Documents/smart_parking/smart_parking.srcs/sources_1/new/echo_detect.vhd:22]
+	Parameter DEVICE_NUMBER bound to: 3 - type: integer 
+	Parameter MIN_DISTANCE bound to: 20 - type: integer 
+INFO: [Synth 8-3491] module 'echo_detect' declared at 'C:/Users/240938/Documents/smart_parking/smart_parking.srcs/sources_1/new/echo_detect.vhd:6' bound to instance 'echo_3' of component 'echo_detect' [C:/Users/240938/Documents/smart_parking/smart_parking.srcs/sources_1/new/top_level_01.vhd:202]
+INFO: [Synth 8-638] synthesizing module 'echo_detect__parameterized3' [C:/Users/240938/Documents/smart_parking/smart_parking.srcs/sources_1/new/echo_detect.vhd:22]
+	Parameter DEVICE_NUMBER bound to: 3 - type: integer 
+	Parameter MIN_DISTANCE bound to: 20 - type: integer 
+WARNING: [Synth 8-614] signal 'sig_prepare' is read in the process but is not in the sensitivity list [C:/Users/240938/Documents/smart_parking/smart_parking.srcs/sources_1/new/echo_detect.vhd:33]
+INFO: [Synth 8-256] done synthesizing module 'echo_detect__parameterized3' (3#1) [C:/Users/240938/Documents/smart_parking/smart_parking.srcs/sources_1/new/echo_detect.vhd:22]
+	Parameter DEVICE_NUMBER bound to: 4 - type: integer 
+	Parameter MIN_DISTANCE bound to: 20 - type: integer 
+INFO: [Synth 8-3491] module 'echo_detect' declared at 'C:/Users/240938/Documents/smart_parking/smart_parking.srcs/sources_1/new/echo_detect.vhd:6' bound to instance 'echo_4' of component 'echo_detect' [C:/Users/240938/Documents/smart_parking/smart_parking.srcs/sources_1/new/top_level_01.vhd:216]
+INFO: [Synth 8-638] synthesizing module 'echo_detect__parameterized5' [C:/Users/240938/Documents/smart_parking/smart_parking.srcs/sources_1/new/echo_detect.vhd:22]
+	Parameter DEVICE_NUMBER bound to: 4 - type: integer 
+	Parameter MIN_DISTANCE bound to: 20 - type: integer 
+WARNING: [Synth 8-614] signal 'sig_prepare' is read in the process but is not in the sensitivity list [C:/Users/240938/Documents/smart_parking/smart_parking.srcs/sources_1/new/echo_detect.vhd:33]
+INFO: [Synth 8-256] done synthesizing module 'echo_detect__parameterized5' (3#1) [C:/Users/240938/Documents/smart_parking/smart_parking.srcs/sources_1/new/echo_detect.vhd:22]
+INFO: [Synth 8-3491] module 'mplx' declared at 'C:/Users/240938/Documents/smart_parking/smart_parking.srcs/sources_1/new/mplx.vhd:5' bound to instance 'multiplexer' of component 'mplx' [C:/Users/240938/Documents/smart_parking/smart_parking.srcs/sources_1/new/top_level_01.vhd:232]
+INFO: [Synth 8-638] synthesizing module 'mplx' [C:/Users/240938/Documents/smart_parking/smart_parking.srcs/sources_1/new/mplx.vhd:23]
+INFO: [Synth 8-226] default block is never used [C:/Users/240938/Documents/smart_parking/smart_parking.srcs/sources_1/new/mplx.vhd:58]
+INFO: [Synth 8-256] done synthesizing module 'mplx' (4#1) [C:/Users/240938/Documents/smart_parking/smart_parking.srcs/sources_1/new/mplx.vhd:23]
+INFO: [Synth 8-3491] module 'debounce' declared at 'C:/Users/240938/Documents/smart_parking/smart_parking.srcs/sources_1/new/debounce.vhd:24' bound to instance 'dbounc' of component 'debounce' [C:/Users/240938/Documents/smart_parking/smart_parking.srcs/sources_1/new/top_level_01.vhd:248]
+INFO: [Synth 8-638] synthesizing module 'debounce' [C:/Users/240938/Documents/smart_parking/smart_parking.srcs/sources_1/new/debounce.vhd:38]
+INFO: [Synth 8-226] default block is never used [C:/Users/240938/Documents/smart_parking/smart_parking.srcs/sources_1/new/debounce.vhd:83]
+INFO: [Synth 8-256] done synthesizing module 'debounce' (5#1) [C:/Users/240938/Documents/smart_parking/smart_parking.srcs/sources_1/new/debounce.vhd:38]
+INFO: [Synth 8-3491] module 'bin2bcd9' declared at 'C:/Users/240938/Documents/smart_parking/smart_parking.srcs/sources_1/new/bin2bcd9.vhd:6' bound to instance 'decoder' of component 'bin2bcd9' [C:/Users/240938/Documents/smart_parking/smart_parking.srcs/sources_1/new/top_level_01.vhd:259]
+INFO: [Synth 8-638] synthesizing module 'bin2bcd9' [C:/Users/240938/Documents/smart_parking/smart_parking.srcs/sources_1/new/bin2bcd9.vhd:11]
+INFO: [Synth 8-256] done synthesizing module 'bin2bcd9' (6#1) [C:/Users/240938/Documents/smart_parking/smart_parking.srcs/sources_1/new/bin2bcd9.vhd:11]
+INFO: [Synth 8-3491] module 'seven_seg_disp_drv' declared at 'C:/Users/240938/Documents/smart_parking/smart_parking.srcs/sources_1/new/seven_seg_disp_drv.vhd:6' bound to instance 'display' of component 'seven_seg_disp_drv' [C:/Users/240938/Documents/smart_parking/smart_parking.srcs/sources_1/new/top_level_01.vhd:265]
+INFO: [Synth 8-638] synthesizing module 'seven_seg_disp_drv' [C:/Users/240938/Documents/smart_parking/smart_parking.srcs/sources_1/new/seven_seg_disp_drv.vhd:28]
+INFO: [Synth 8-638] synthesizing module 'clock_enable__parameterized0' [C:/Users/240938/Documents/smart_parking/smart_parking.srcs/sources_1/new/clock_enable.vhd:18]
+	Parameter PERIOD bound to: 50000 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'clock_enable__parameterized0' (6#1) [C:/Users/240938/Documents/smart_parking/smart_parking.srcs/sources_1/new/clock_enable.vhd:18]
+INFO: [Synth 8-638] synthesizing module 'bin2seg' [C:/Users/240938/Documents/smart_parking/smart_parking.srcs/sources_1/new/bin2seg.vhd:21]
+INFO: [Synth 8-256] done synthesizing module 'bin2seg' (7#1) [C:/Users/240938/Documents/smart_parking/smart_parking.srcs/sources_1/new/bin2seg.vhd:21]
+INFO: [Synth 8-256] done synthesizing module 'seven_seg_disp_drv' (8#1) [C:/Users/240938/Documents/smart_parking/smart_parking.srcs/sources_1/new/seven_seg_disp_drv.vhd:28]
+INFO: [Synth 8-256] done synthesizing module 'top_level' (9#1) [C:/Users/240938/Documents/smart_parking/smart_parking.srcs/sources_1/new/top_level_01.vhd:35]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 999.887 ; gain = 0.000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 999.887 ; gain = 0.000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 999.887 ; gain = 0.000
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.007 . Memory (MB): peak = 999.887 ; gain = 0.000
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [C:/Users/240938/Documents/smart_parking/smart_parking.srcs/constrs_1/new/nexys-a7-50t.xdc]
+Finished Parsing XDC File [C:/Users/240938/Documents/smart_parking/smart_parking.srcs/constrs_1/new/nexys-a7-50t.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Users/240938/Documents/smart_parking/smart_parking.srcs/constrs_1/new/nexys-a7-50t.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/top_level_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/top_level_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 999.887 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 999.887 ; gain = 0.000
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 999.887 ; gain = 0.000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7a50ticsg324-1L
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 999.887 ; gain = 0.000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 999.887 ; gain = 0.000
+---------------------------------------------------------------------------------
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'debounce'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                    idle |                               00 |                               00
+                 count_1 |                               01 |                               01
+                 pressed |                               10 |                               10
+                 count_0 |                               11 |                               11
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'debounce'
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 999.887 ; gain = 0.000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input   17 Bit       Adders := 1     
+	   2 Input   13 Bit       Adders := 4     
+	   2 Input    9 Bit       Adders := 4     
+	   2 Input    4 Bit       Adders := 11    
+	   2 Input    3 Bit       Adders := 2     
+	   2 Input    2 Bit       Adders := 1     
++---Registers : 
+	               17 Bit    Registers := 1     
+	               13 Bit    Registers := 4     
+	                9 Bit    Registers := 8     
+	                8 Bit    Registers := 1     
+	                4 Bit    Registers := 1     
+	                3 Bit    Registers := 2     
+	                2 Bit    Registers := 1     
+	                1 Bit    Registers := 20    
++---Muxes : 
+	   2 Input   17 Bit        Muxes := 1     
+	   2 Input   13 Bit        Muxes := 4     
+	   4 Input    9 Bit        Muxes := 1     
+	   2 Input    8 Bit        Muxes := 8     
+	  17 Input    7 Bit        Muxes := 1     
+	   2 Input    4 Bit        Muxes := 6     
+	   4 Input    3 Bit        Muxes := 2     
+	   2 Input    3 Bit        Muxes := 1     
+	   2 Input    2 Bit        Muxes := 5     
+	   4 Input    2 Bit        Muxes := 1     
+	   2 Input    1 Bit        Muxes := 35    
+	   4 Input    1 Bit        Muxes := 2     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 120 (col length:60)
+BRAMs: 150 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 999.887 ; gain = 0.000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:21 ; elapsed = 00:00:21 . Memory (MB): peak = 999.887 ; gain = 0.000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:21 ; elapsed = 00:00:21 . Memory (MB): peak = 999.887 ; gain = 0.000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 1010.594 ; gain = 10.707
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:24 ; elapsed = 00:00:25 . Memory (MB): peak = 1012.270 ; gain = 12.383
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:24 ; elapsed = 00:00:25 . Memory (MB): peak = 1012.270 ; gain = 12.383
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:24 ; elapsed = 00:00:25 . Memory (MB): peak = 1012.270 ; gain = 12.383
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:24 ; elapsed = 00:00:25 . Memory (MB): peak = 1012.270 ; gain = 12.383
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:24 ; elapsed = 00:00:25 . Memory (MB): peak = 1012.270 ; gain = 12.383
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:24 ; elapsed = 00:00:25 . Memory (MB): peak = 1012.270 ; gain = 12.383
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+-------+------+
+|      |Cell   |Count |
++------+-------+------+
+|1     |BUFG   |     1|
+|2     |CARRY4 |    27|
+|3     |LUT1   |    10|
+|4     |LUT2   |    63|
+|5     |LUT3   |    29|
+|6     |LUT4   |    30|
+|7     |LUT5   |    32|
+|8     |LUT6   |    84|
+|9     |FDRE   |   210|
+|10    |FDSE   |     4|
+|11    |IBUF   |     7|
+|12    |OBUF   |    24|
++------+-------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:24 ; elapsed = 00:00:25 . Memory (MB): peak = 1012.270 ; gain = 12.383
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 0 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:18 ; elapsed = 00:00:24 . Memory (MB): peak = 1012.270 ; gain = 12.383
+Synthesis Optimization Complete : Time (s): cpu = 00:00:25 ; elapsed = 00:00:25 . Memory (MB): peak = 1012.270 ; gain = 12.383
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.005 . Memory (MB): peak = 1025.320 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 27 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1025.320 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+INFO: [Common 17-83] Releasing license: Synthesis
+55 Infos, 5 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:30 ; elapsed = 00:00:31 . Memory (MB): peak = 1025.320 ; gain = 25.434
+INFO: [Common 17-1381] The checkpoint 'C:/Users/240938/Documents/smart_parking/smart_parking.runs/synth_1/top_level.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file top_level_utilization_synth.rpt -pb top_level_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Thu Apr 18 18:50:22 2024...
