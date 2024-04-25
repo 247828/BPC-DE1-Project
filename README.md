@@ -34,7 +34,7 @@ Funkciu merania a vyhodnotenia vysvetlíme na jednom senzore: Spustením štarto
 <h3>Použité komponenty a simulácie</h3>
 <ul>
   <li><a href="/zdrojove_kody/smart_parking/sources_1/new/clock_enable.vhd">clock_enable.vhd</a> - generátor periodických "štartovacích" pulzov</li>
-  <p><i>Tento komponent se používá k zapnutí čitaní v komponentě pro výběr segmentu displeje a zapínání trigovacích impulsů odesílaných do detektoru</i></p>
+  <p><i>Tento komponent se používá k zapnutí čitaní v komponentech pro výběr segmentu displeje a zapínání trigovacích pulsů pro detektor</i></p>
   <img src="/obrazky/simulace/clock_enable.png" alt="Simulacia modulu clock_enable">
   <i>obr. 2 Simulácia komponentu clock_enable</i><br><br>
   <li><a href="/zdrojove_kody/smart_parking/sources_1/new/trig_pulse.vhd">trig_pulse.vhd</a> - generátor jednorázových pulzov pre ultrazvukový senzor</li>
