@@ -35,7 +35,7 @@ Funkciu merania a vyhodnotenia vysvetlíme na jednom senzore: Spustením štarto
 <h3>Použité komponenty a simulácie</h3>
 <ul>
   <li><a href="/zdrojove_kody/smart_parking/sources_1/new/trig_pulse.vhd">trig_pulse.vhd</a> - generátor jednorázových pulzov pre ultrazvukový senzor</li>
-  <p><i>Tento komponent se používá k zapnutí čitaní v komponentech pro výběr segmentu displeje a zapínání trigovacích pulsů pro detektor</i></p>
+  <p><i>Tento komponent se používá k zapnutí čitaní v komponentě pro výběr segmentu displeje a zapínání trigovacích pulsů pro detektor</i></p>
   <img src="/obrazky/simulace/trig_pulse.png" alt="Simulacia modulu trig_pulse">
   <i>obr. 3 Simulácia komponentu trig_pulse</i><br><br>
   <li><a href="/zdrojove_kody/smart_parking/sources_1/new/echo_detect.vhd">echo_detect.vhd</a> - počítadlo a vyhodnotenie vzdialenosti v cm v binárom čísle</li>
