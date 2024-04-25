@@ -49,7 +49,7 @@ Funkciu merania a vyhodnotenia vysvetlíme na jednom senzore: Spustením štarto
   <i>obr. 6 Simulácia komponentu mplx</i><br><br>
   <li><a href="/zdrojove_kody/smart_parking/sources_1/new/bin2bcd9.vhd">bin2bcd9.vhd</a> - prevodník binárneho čísla na kód "Binary to Decimal" pre zobrazenie čísel v desiatkovej sústave na sedem segmentových displejoch</li>
   <p><i>krátky popis</i></p>
-  <img src="/obrazky/bin2bcd9.png" alt="Simulacia modulu bin2bcd.vhd">
+  <img src="/obrazky/simulace/bin2bcd9.png" alt="Simulacia modulu bin2bcd.vhd">
   <i>obr. 7 Simulácia komponentu bin2bcd9</i><br><br>
   <li><a href="/zdrojove_kody/smart_parking/sources_1/new/seven_seg_disp_drv.vhd">seven_seg_disp_drv.vhd</a> - Ovládač sedemsegmentových jednotiek dosky Nexys A7-50T</li>
   <p><i>Rýchlosť obnovania segmentov je 125 Hz (obnovovacia perióda je 8 ms, každý segment svieti 1 ms). Používa komponenty bin2seg.vhd a clock_enable.vhd</i></p>
