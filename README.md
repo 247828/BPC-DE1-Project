@@ -3,9 +3,9 @@
 <i>Vysoké učení technické v Brně, Fakulta elektrotechniky a komunikačních technologií, letný semester 2023/2024</i>
 <h2>Členovia tímu</h2>
 
-Jakub Kováč (spracovanie údajov senzormi, simulácie...)<br>
-Nikita Kolobov (multiplexor, simulácie...)<br>
-Martin Kučera (dekóder binary to binary decoded decimal, simulácie...)<br>
+Jakub Kováč (nápad návrhu, spracovanie údajov senzormi, simulácie)<br>
+Nikita Kolobov (multiplexor, simulácie)<br>
+Martin Kučera (dekóder binary to binary decoded decimal, simulácie)<br>
 
 <h2>Teoretický popis, vysvetlenie</h2>
 <p>
@@ -30,13 +30,10 @@ Keďže signály dosky Nexys A7-50T pracujú s napätím 3,3 V a senzory s 5 V, 
 <i>obr. 1 Schéma návrhu riešenia</i><br><br>
 Funkciu merania a vyhodnotenia vysvetlíme na jednom senzore: Spustením štartovacieho pulzu sa spustí jednorázový impulz, ktorý spustí vyslanie ultrazvukovej vlny a zároveň počítadlo. Počítadlo počíta hodinové cykly. Keď po určitom počte hodinových cykloch dosiahne hodnotu odpovedajúcu približne jednému centimetru, pripočíta sa jeden centimeter do výsledku a počítadlo sa vynuluje a počíta znovu. Keď dorazí odrazená vlna, zastaví sa počítanie, výsledná vzdialenosť sa nasmeruje na spracovanie a následné zobrazenie na displej. Vyvolaním resetu sa všetky počítadlá vynulujú.
 </p>
+<p>Zdrojové kódy komponentov sú k dispozícii <a href="/zdrojove_kody/smart_parking/sources_1/new">tu</a> a súbory pre simulovanie test bench sú k dispozícii <a href="/zdrojove_kody/smart_parking/sim_1/new">tu</a>.</p>
 
 <h3>Použité komponenty a simulácie</h3>
 <ul>
-  <li><a href="/zdrojove_kody/smart_parking/sources_1/new/clock_enable.vhd">clock_enable.vhd</a> - generátor periodických "štartovacích" pulzov</li>
-  <p><i>Tento komponent se používá k zapnutí čitaní v komponentech pro výběr segmentu displeje a zapínání trigovacích pulsů pro detektor</i></p>
-  <img src="/obrazky/simulace/clock_enable.png" alt="Simulacia modulu clock_enable">
-  <i>obr. 2 Simulácia komponentu clock_enable</i><br><br>
   <li><a href="/zdrojove_kody/smart_parking/sources_1/new/trig_pulse.vhd">trig_pulse.vhd</a> - generátor jednorázových pulzov pre ultrazvukový senzor</li>
   <p><i>krátky popis</i></p>
   <img src="/obrazky/simulace/trig_pulse.png" alt="Simulacia modulu trig_pulse">
@@ -48,7 +45,7 @@ Funkciu merania a vyhodnotenia vysvetlíme na jednom senzore: Spustením štarto
   <i>obr. 4 a 5 Simulácia komponentu clock_enable</i><br><br>
   <li><a href="/zdrojove_kody/smart_parking/sources_1/new/mplx.vhd">mplx.vhd</a> - multiplexor</li>
   <p>Vyberá jeden z viacerých výstupných údajov detektorov, ktoré sa zobrazia na sedem segmentovej jednotke.</p>
-  <img src="/obrazky/simulace/mplx.png" alt="Simulacia modulu echo_detect">
+  <img src="/obrazky/simulace/mplx.png" alt="Simulacia modulu mplx.vhd">
   <i>obr. 6 Simulácia komponentu mplx</i><br><br>
   <li><a href="/zdrojove_kody/smart_parking/sources_1/new/bin2bcd9.vhd">bin2bcd9.vhd</a> - prevodník binárneho čísla na kód "Binary to Decimal" pre zobrazenie čísel v desiatkovej sústave na sedem segmentových displejoch</li>
   <p><i>krátky popis</i></p>
@@ -57,20 +54,22 @@ Funkciu merania a vyhodnotenia vysvetlíme na jednom senzore: Spustením štarto
   <li><a href="/zdrojove_kody/smart_parking/sources_1/new/seven_seg_disp_drv.vhd">seven_seg_disp_drv.vhd</a> - Ovládač sedemsegmentových jednotiek dosky Nexys A7-50T</li>
   <p><i>Rýchlosť obnovania segmentov je 125 Hz (obnovovacia perióda je 8 ms, každý segment svieti 1 ms). Používa komponenty bin2seg.vhd a clock_enable.vhd</i></p>
   <img src="/obrazky/simulace/seven_seg_disp_drv.png" alt="Simulacia modulu seven_seg_disp_drv.vhd">
-  <i>obr. 8 Simulácia komponentu seven_seg_disp_drv/i><br><br>
+  <i>obr. 8 Simulácia komponentu seven_seg_disp_drv</i><br><br>
   
 </ul>
-<p>Súbory test bench nájdete <a href="/zdrojove_kody/smart_parking/sim_1/new">tu</a>.</p>
 
 <h2>Návod na používanie</h2>
 <p><i>Stručné vysvetlenie finálneho produktu, fotografie a video.</i></p>
+<p>
+Srdcom zariadenia je doska s FPGA Nexys A7-50T. K nemu je možné zapojiť štyri ultrazvukové senzory pomocou Pmod konektorov: piny 1-4 konektoru JC sa používajú na pripojenie jednlotlivých vstupom "trig" a piny 1-5 konektoru JD na pripojenie jednotlivých výstupov "echo". Na sedemsegmentovom displeji sa zobrazuje aktuálna vzdialenosť zvoleného zariadenia v metroch. Aktualizácia vzdialeností prebieha 5x za sekundu. Prepínanie medzi zobrazením vzdialeností sa vykonáva stlačením stredného tlačidla označeného BTNC. Reset celého zariadenia sa vykonáva tlačidlom BTND
+</p>
 
 <h2>Použité zdroje a nástroje</h2>
 <ol>
   <li>Moduly s ultrazvukovými senzormi typ HC-SR04, <a href="https://cdn.sparkfun.com/datasheets/Sensors/Proximity/HCSR04.pdf">katalógový list</a></li>
   <li>Doska s FPGA typ Nexys A7-50T, <a href="https://digilent.com/reference/programmable-logic/nexys-a7/reference-manual">referenčný manuál</a>, <a href="https://raw.githubusercontent.com/Digilent/digilent-xdc/master/Nexys-A7-50T-Master.xdc">súbor constraint</a></li>
-  <li>Komponenty <i>clock_enable.vhd</i> a <i>bin2seg.vhd</i> vytvorené počas počítačových cvičení kurzu BPC-DE1</li>
-  <li>Inšpirácia pre návrh prevodníku binary to BCD: <a href="https://www.youtube.com/watch?v=VKKGyOc4zRA">video</a>, <a href="/obrazky/bin2bcd.jpg">ukážka návrhu algoritmu</a></li>
+  <li>Komponenty <i>clock_enable.vhd</i>, <i>bin2seg.vhd</i> a <i>debounce.vhd</i> vytvorené počas počítačových cvičení kurzu BPC-DE1, <a href="https://github.com/tomas-fryza/vhdl-course">GitHub kurzu</a></li>
+  <li>Inšpirácia pre návrh prevodníku binary to BCD: <a href="https://www.youtube.com/watch?v=VKKGyOc4zRA">video</a>, <a href="/obrazky/bin2bcd.jpg">návrh algoritmu</a></li>
   <li>Inšpirácia pre návrh ovládania sedem segmentovej jednotky dosky Nexys A7-50T: <a href="https://digilent.com/reference/programmable-logic/nexys-a7/reference-manual#seven-segment_display">referenčný manuál Nexys A7-50T, kap. 9.1 Seven-Segment Display</a></li>
   <li>Osciloskop Keysight Technologies DSOX3034T (350 MHz, 4 analógové kanály)</li>
   <li><i>... odkazy s nápadmi, kde sme sa inšpirovali, manuály a pod.</i></li>
