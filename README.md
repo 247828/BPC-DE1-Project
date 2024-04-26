@@ -55,7 +55,7 @@ Funkciu merania a vyhodnotenia vysvetlíme na jednom senzore: Spustením štarto
   <img src="/obrazky/simulace/mplx.png" alt="Simulacia modulu mplx.vhd">
   <i>obr. 7 Simulácia komponentu mplx</i><br><br>
   <li><a href="/zdrojove_kody/smart_parking/sources_1/new/bin2bcd9.vhd">bin2bcd9.vhd</a> - prevodník binárneho čísla na kód "Binary to Decimal" pre zobrazenie čísel v desiatkovej sústave na sedem segmentových displejoch</li>
-  <p>krátky popis <a href="/obrazky/bin2bcd.vhd">bin2bcd.vhd</a></p>
+  <p>krátky popis <a href="/obrazky/bin2bcd.jpg">bin2bcd.jpg</a></p>
   <img src="/obrazky/simulace/bin2bcd9_1.png" alt="Simulacia modulu bin2bcd.vhd">
   <i>obr. 8 Simulácia komponentu bin2bcd9</i><br><br>
   <li><a href="/zdrojove_kody/smart_parking/sources_1/new/seven_seg_disp_drv.vhd">seven_seg_disp_drv.vhd</a> - Ovládač sedemsegmentových jednotiek dosky Nexys A7-50T</li>
