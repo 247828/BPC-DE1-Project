@@ -9,7 +9,7 @@ Martin Kučera (dekóder binary to binary decoded decimal, simulácie)<br>
 
 <h2>Teoretický popis, vysvetlenie</h2>
 <p>
-Inteligentný parkovací systém je sám schopný na pravidelne aktualizovaných dátach vyhodnotiť, aký je stav parkovacích miest. Ak použijeme vstupné dáta vzdialenosť, je potrebné zabezpečiť jej pravidelné meranie a priradením určitých hodnôt do určených intervaloch vyhodnocovať obsadenie parkovacieho miesta.
+Inteligentný parkovací systém je sám schopný na pravidelne aktualizovaných dátach vyhodnotiť, aký je stav parkovacích miest. Ak použijeme vstupný údaj vzdialenosť, je potrebné zabezpečiť jej pravidelné meranie a priradením určitých hodnôt do určených intervaloch vyhodnocovať obsadenie parkovacieho miesta.
 <br><br>
 <i>HC-SR04</i> je ultrazvukový senzor, ktorý meria vzdialenosť v rozmedzí od približne 2 cm do 4 m. Princíp merania spočíva vyslaním ultrazvukových pulzov vysielačom, ktoré sa spustia jednorázovým externým pulzom úrovne HIGH minimálnej šírky 10 µs na vstupný pin "trig". Tým sa taktiež na výstupe "echo" zmení úroveň na HIGH a modul čaká na odrazenú vlnu. Prichádzajúca vlna zmení úroveň na výstupe "echo" na LOW. Výsledná vzdialenosť sa prepočíta pomocou vzťahu:
 <br><br>
@@ -35,7 +35,7 @@ Keďže signály dosky Nexys A7-50T pracujú s napätím 3,3 V a senzory s 5 V, 
 
 <h2>Popis softvérového riešenia</h2>
 <p>
-Funkciu merania a vyhodnotenia vysvetlíme na jednom senzore: Spustením štartovacieho pulzu sa spustí jednorázový impulz, ktorý spustí vyslanie ultrazvukovej vlny a zároveň počítadlo. Počítadlo počíta hodinové cykly. Keď po určitom počte hodinových cykloch dosiahne hodnotu odpovedajúcu približne jednému centimetru, pripočíta sa jeden centimeter do výsledku a počítadlo sa vynuluje a počíta znovu. Keď dorazí odrazená vlna, zastaví sa počítanie, výsledná vzdialenosť sa nasmeruje na spracovanie a následné zobrazenie na displej. Vyvolaním resetu sa všetky počítadlá vynulujú.
+Meranie a vyhodnotenie vysvetlíme na jednom senzore: Spustením štartovacieho pulzu sa spustí jednorázový impulz, ktorý spustí vyslanie ultrazvukovej vlny a zároveň počítadlo. Počítadlo počíta hodinové cykly. Keď po určitom počte hodinových cykloch dosiahne hodnotu odpovedajúcu približne jednému centimetru, pripočíta sa jeden centimeter do výsledku a počítadlo sa vynuluje a počíta znovu. Keď dorazí odrazená vlna, zastaví sa počítanie, výsledná vzdialenosť sa nasmeruje na spracovanie a následné zobrazenie na displej. Vyvolaním resetu sa všetky počítadlá vynulujú.
 </p>
 <p>Zdrojové kódy komponentov sú k dispozícii <a href="/zdrojove_kody/smart_parking/sources_1/new">tu</a> a súbory pre simulovanie test bench sú k dispozícii <a href="/zdrojove_kody/smart_parking/sim_1/new">tu</a>.</p>
 <h3>Použité komponenty a simulácie</h3>
@@ -75,12 +75,17 @@ Funkciu merania a vyhodnotenia vysvetlíme na jednom senzore: Spustením štarto
 <img src="/obrazky/fotografie/01.jpg" alt="Ukážka zapojenia">
 <i>obr. 10 Ukážka výsledného zapojenia inteligentného parkovacieho systému</i>
 <br><br>
-Srdcom inteligentného parkovacieho zariadenia je doska s FPGA Nexys A7-50T. K nej je možné zapojiť štyri ultrazvukové senzory HC-SR04 pomocou Pmod konektorov: piny 1-4 konektoru JC sa používajú na pripojenie jednlotlivých vstupom "trig" a piny 1-5 konektoru JD na pripojenie jednotlivých výstupov "echo", ktoré sa pripájajú cez rezistorový delič (zníženie úrovne napätia z 5 V na 3,3 V). Senzory sú napájené externým zdrojom 5 V (Arduino). Na sedemsegmentovom displeji sa zobrazuje aktuálna vzdialenosť zvoleného zariadenia v metroch. Prepínanie medzi zobrazením vzdialeností jednotlivých senzorov sa vykonáva stlačením stredného tlačidla označeného BTNC. Štyrmi zelenými LED-kami sa indikuje obsadenie parkovacieho miesta (svieti - je voľné, nesvieti - obsadené). Meranie vzdialeností prebieha 5x za sekundu. Reset celého zariadenia sa vykonáva tlačidlom BTND.
+K doske Nexys A7-50T je možné zapojiť štyri ultrazvukové senzory HC-SR04 pomocou Pmod konektorov: piny 1-4 konektoru JC sa používajú na pripojenie jednlotlivých vstupom "trig" a piny 1-5 konektoru JD na pripojenie jednotlivých výstupov "echo", ktoré sa pripájajú cez rezistorový delič (zníženie úrovne napätia z 5 V na 3,3 V). Senzory sú napájené externým zdrojom 5 V (Arduino). Na sedemsegmentovom displeji sa zobrazuje aktuálna vzdialenosť zvoleného zariadenia v metroch. Prepínanie medzi zobrazením vzdialeností jednotlivých senzorov sa vykonáva stlačením stredného tlačidla označeného BTNC. Štyrmi zelenými LED-kami sa indikuje obsadenie parkovacieho miesta (svieti - je voľné, nesvieti - obsadené). Meranie vzdialeností prebieha 5x za sekundu. Reset celého zariadenia sa vykonáva tlačidlom BTND.
 <br>
 <img src="/obrazky/fotografie/02_popis.png" alt="Pohľad zhora a popis zapojenia">
 <i>obr. 11 Popis zapojenia</i>
 <br><br>
-<i>Odkaz na video</i>
+<i>Praktická ukážka (video):</i>
+<br>
+<video width="640" height="360" controls>
+<source src="/obrazky/movie.mp4" type="video/mp4">
+Váš prehliadač nepodporuje prehratie videa.
+</video> 
 </p>
 
 <h2>Použité zdroje a nástroje</h2>
