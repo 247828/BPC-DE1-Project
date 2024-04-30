@@ -80,12 +80,7 @@ K doske Nexys A7-50T je možné zapojiť štyri ultrazvukové senzory HC-SR04 po
 <img src="/obrazky/fotografie/02_popis.png" alt="Pohľad zhora a popis zapojenia">
 <i>obr. 11 Popis zapojenia</i>
 <br><br>
-<i>Praktická ukážka (video):</i>
-<br>
-<video width="640" height="360" controls>
-<source src="/obrazky/movie.mp4" type="video/mp4">
-Váš prehliadač nepodporuje prehratie videa.
-</video> 
+<i><a href="https://youtu.be/t4LYXKCEKfI">Odkaz na video</a></i> 
 </p>
 
 <h2>Použité zdroje a nástroje</h2>
